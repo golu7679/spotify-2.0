@@ -40,3 +40,8 @@ yarn-error.log*
 # software files
 .idea
 .vscode
+
+
+# lock files
+yarn.lock
+package-json.lock
