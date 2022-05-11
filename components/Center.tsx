@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { shuffle } from "lodash";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { playlistState, playlistsIdState } from "../atoms/playlistAtom";
+import { playlistState, playlistIdState } from "../atoms/playlistAtom";
 import useSpotify from "../hooks/useSpotify";
 import Songs from "./Songs";
 
@@ -22,7 +22,7 @@ function Center() {
     const { data: session } = useSession();
     const spotifyApi = useSpotify();
     const [color, setColor] = useState(null);
-    const playlistId = useRecoilValue(playlistsIdState);
+    const playlistId = useRecoilValue(playlistIdState);
     const [playlist, setPlaylist] = useRecoilState(playlistState);
 
     useEffect(() => {
@@ -33,11 +33,11 @@ function Center() {
         spotifyApi.getPlaylist(playlistId).then((data) => {
             setPlaylist(data.body);
         }).catch((err) => console.log("Something went wrong", err))
-    }, [spotifyApi]);
+    }, [spotifyApi, playlistId]);
 
 
     return (
-        <div className="flex-grow">
+        <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide">
             <header className="absolute top-5 right-8">
                 <div className="flex items-center bg-black text-white space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2">
                     <img className="rounded-full w-10 h-10" src={session?.user.image} alt="" />

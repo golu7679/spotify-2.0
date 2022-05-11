@@ -4,14 +4,16 @@ const scopes = [
     "user-read-email",
     "playlist-read-private",
     "playlist-read-collaborative",
-    "user-read-email",
     "streaming",
     "user-read-private",
     "user-top-read",
     "user-library-modify",
     "user-read-playback-state",
     "user-read-currently-playing",
-    "user-follow-read"
+    "user-follow-read",
+    "user-library-read",
+    "user-modify-playback-state",
+    "user-read-recently-played"
 ].join(",");
 
 const params = {
