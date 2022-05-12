@@ -13,7 +13,7 @@ async function refreshAccessToken(token) {
         return {
             ...token,
             accessToken: refreshedToken.access_token,
-            accessTokenExpires: Date.now() + refreshedToken.expires_in * 1000000000000,
+            accessTokenExpires: Date.now() + refreshedToken.expires_in * 1000,
             refreshToken: refreshedToken.refresh_token ?? token.refreshToken // Replace if new one came back else fall back to old refresh token
         }
 

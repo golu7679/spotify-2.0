@@ -22,8 +22,8 @@ export function useSongInfo() {
                 ).then(res => res.json());
                 setSongInfo(trackInfo);
             }
-        }
-    }, [currentIdTrack, spotifyApi])
-
+        };
+        fetchSongInfo();
+    }, [currentIdTrack, spotifyApi]);
     return songInfo;
 }

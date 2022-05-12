@@ -6,7 +6,7 @@ import { useRecoilState } from "recoil";
 import { currentTrackIdState, isPlayingState } from "../atoms/songAtom";
 import { useSongInfo } from "../hooks/useSongsInfo";
 import useSpotify from "../hooks/useSpotify";
-import debounce from "lodash";
+import { debounce } from "lodash";
 
 export function Player() {
 
@@ -17,8 +17,7 @@ export function Player() {
     const [isPlaying, setIsplaying] = useRecoilState(isPlayingState);
     const [volume, setVolume] = useState(50);
 
-    const songInfo: any = {};
-    // const songInfo = useSongInfo();
+    const songInfo = useSongInfo();
 
     const fetchCurrentSong = () => {
         if (!songInfo) {
@@ -47,10 +46,8 @@ export function Player() {
 
     useEffect(() => {
         if (spotifyApi.getAccessToken() && !currentTrackId) {
-
             fetchCurrentSong();
             setVolume(50);
-
         }
     }, [currentTrackIdState, spotifyApi, session]);
 
